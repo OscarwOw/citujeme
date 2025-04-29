@@ -44,3 +44,14 @@ Company? cpny = JsonSerializer.Deserialize<Company>(response);
 
 
 
+
+wpf
+//<DataGrid Grid.Row="0" Grid.Column="1" AutoGenerateColumns="True" x:Name="zoznam_ludi"></DataGrid>
+
+private ObservableCollection<Person> _persons;
+_persons = new();
+zoznam_ludi.ItemsSource = _persons;
+
+
+
+
