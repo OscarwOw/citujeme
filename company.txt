@@ -53,5 +53,19 @@ _persons = new();
 zoznam_ludi.ItemsSource = _persons;
 
 
+            HttpResponseMessage response = await client.GetAsync(stringBuilder.ToString());
+            response.EnsureSuccessStatusCode();
+            string? strrp = await response.Content.ReadAsStringAsync();
+            XmlDocument xmldoc = new XmlDocument();
+            xmldoc.LoadXml(strrp);
 
+            XmlNodeList subjectNodes = xmldoc.GetElementsByTagName("Subjekt");
+            List<(string, string, string)> subjets = new(); 
+            
+            foreach (XmlNode subjectNode in subjectNodes)
+            {
+                string nazev = subjectNode["nazev"]?.InnerText ?? "NA";
+
+
+///NEEEEEXXXT////////////
 
