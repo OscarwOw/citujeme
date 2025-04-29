@@ -1,0 +1,14 @@
+//Microsoft.EntityFrameworkCore.Sqlite
+//Microsoft.Data.Sqlite
+//Microsoft.EntityFrameworkCore.Sqlite
+//SQLitePCLRaw.bundle_green
+
+public class CompanyDbContext : DbContext
+    {
+        public DbSet<CompanyModel> Companies { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Data Source-company.db");
+        }
+
+    }
