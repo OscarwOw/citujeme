@@ -12,3 +12,35 @@ public class CompanyDbContext : DbContext
         }
 
     }
+//use
+using var context = new CompanyDbContext();
+context.Database.EnsureCreated();
+
+
+
+
+//httpClient Request
+private async Task<string> getData(string url)
+{
+    HttpClient client = new HttpClient();
+    HttpResponseMessage response = await client.GetAsync(url);
+    response.EnsureSuccessStatusCode();
+    string responseBody = await response.Content.ReadAsStringAsync();
+
+    return responseBody;
+}
+
+
+//json serializer class
+        [JsonPropertyName("obchodniJmeno")]
+        public string Name { get; set; }
+        [JsonPropertyName("sidlo")]
+        public Address Sidlo { get; set; }
+        [JsonPropertyName("dic")]
+
+//json deserialize
+string response;
+Company? cpny = JsonSerializer.Deserialize<Company>(response);
+
+
+
