@@ -69,3 +69,17 @@ zoznam_ludi.ItemsSource = _persons;
 
 ///NEEEEEXXXT////////////
 
+
+public void savePersonToFile(Person person)
+{
+    var props = typeof(Person).GetProperties();
+    StringBuilder stringBuilder = new StringBuilder();
+    foreach (var item in props)
+    {
+        string value = item.GetValue(person) as string ?? "";
+        stringBuilder.Append("#").Append(item.Name).Append(" = ").Append(value).Append("\n");
+    }
+
+    string content = stringBuilder.ToString();
+    File.WriteAllText("people.txt", content);
+}
